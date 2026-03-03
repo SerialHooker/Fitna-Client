@@ -1,4 +1,4 @@
-# Zert / Fitna - Module Documentation
+Fitna - Module Documentation
 
 This document lists all the modules available in the client, organized by their respective categories in the GUI.
 
