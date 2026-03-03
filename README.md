@@ -1,12 +1,11 @@
-Fitna Client is a Minecraft Bedrock ghost client designed to be as configurable as possible
+# Zert / Fitna - Module Documentation
 
-# Module Documentation
+This document lists all the modules available in the client, organized by their respective categories in the GUI.
 
 ## Combat
 
 ### AimAssist
 Automatically rotates the camera toward nearby entities.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | yawSpeed | float | 20.0 | Horizontal rotation speed |
@@ -27,11 +26,8 @@ Automatically rotates the camera toward nearby entities.
 | priority | enum | FOV | Targeting priority (Distance, FOV) |
 | point | enum | ADAPTIVE | Aim point (HEAD, BODY, LEGS, FEET, ADAPTIVE) |
 
----
-
 ### AutoClicker
 Automatic clicking with multiple modes.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | avoidMenu | bool | true | Disable when a menu is open |
@@ -45,11 +41,8 @@ Automatic clicking with multiple modes.
 | rapidValue | int | 20 | CPS during burst |
 | rapidTime | int | 500 | Burst duration (ms) |
 
----
-
 ### Reach
 Extends attack range.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | minReach | float | 3.0 | Minimum reach |
@@ -60,11 +53,8 @@ Extends attack range.
 | onlyGround | bool | false | Only activate on ground |
 | silentReach | float | 0.0 | Silent reach (server-side) |
 
----
-
 ### TriggerBot
 Automatically clicks when crosshair is on an entity.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | reaction | int | 100 | Reaction time (ms) |
@@ -83,11 +73,8 @@ Automatically clicks when crosshair is on an entity.
 | timeClickerCPS | int | 20 | Time clicker CPS |
 | timeClickerBurstDuration | int | 200 | Time clicker burst duration (ms) |
 
----
-
 ### KillAura
 Automatically attacks entities within range.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | mode | enum | Stable | Attack mode (Unstable, Stable) |
@@ -104,11 +91,18 @@ Automatically attacks entities within range.
 | criticals | bool | true | Enable critical hits |
 | fallDistance | float | 0.1 | Fall distance for criticals |
 
----
+### Hitbox
+Modifies entity hitbox size.
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| horizontalHitbox | float | 0.6 | Horizontal hitbox size |
+| verticalHitbox | float | 1.8 | Vertical hitbox size |
+| silentHitbox | float | 0.0 | Silent hitbox (server-side) |
+| onlySlot | bool | false | Only activate on a specific slot |
+| slotChoice | int | 0 | Required slot (0-8) |
 
 ### Criticals
 Forces critical hits on every attack.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | mode | enum | Sentinel | Mode (Timing, LowJump, Hybrid, Sentinel) |
@@ -123,50 +117,28 @@ Forces critical hits on every attack.
 | checkInterval | int | 5 | Check interval (ticks) |
 | cooldownAfterHit | int | 200 | Cooldown after hit (ms) |
 
----
-
-### Hitbox
-Modifies entity hitbox size.
-
+### Disabler
+Advanced anti-cheat bypasses and desync utilities (Solstice/Prax based).
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| horizontalHitbox | float | 0.6 | Horizontal hitbox size |
-| verticalHitbox | float | 1.8 | Vertical hitbox size |
-| silentHitbox | float | 0.0 | Silent hitbox (server-side) |
-| onlySlot | bool | false | Only activate on a specific slot |
-| slotChoice | int | 0 | Required slot (0-8) |
+| mode | enum | Custom | Disabler mode (Custom, Lifeboat, Flareon, Sentinel, SentinelNew, OomphBypass) |
+| flareonType | enum | PingSpoof | Sub-mode for Flareon (PingSpoof, PingHolder, MoveFix) |
+| oomphType | enum | VelocityReduce| Sub-mode for Oomph (LiquidSpoof, TickDesync, VelocityReduce, GroundAbuse, etc.) |
+| enablePositionSpoof| bool | false | Spoof combat position |
+| targetRaycastDist | float | 2.85 | Combat raycast spoof distance |
+| enableBacktrack | bool | false | Built-in combat backtrack |
+| enableHitboxBypass| bool | false | Built-in combat hitbox bypass |
+| enableSilentRotation| bool | false | Silent rotation on attack |
 
----
-
-
----
-
-### ThrowPearl
-Automatically throws an ender pearl.
-
+### Nuker
+Destroys all blocks within a radius around the player.
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| keybind | int | 0 | Activation key (0 = disabled) |
-| pearlId | int | 0x1c6 | Pearl item ID (454 decimal) |
-| clickCount | int | 3 | Number of right clicks to simulate |
-| clickDelay | int | 50 | Delay between clicks (ms) |
-
----
-
-### ThrowPot
-Automatically throws a potion.
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| keybind | int | 0 | Activation key (0 = disabled) |
-| potionId | int | 0x258 | Potion item ID (600 decimal) |
-| clickDelay | int | 50 | Delay after click (ms) |
-
----
+| radius | int | 1 | Destruction radius (1 = 3x3, 2 = 5x5, etc.) |
+| delayPerBlock | int | 50 | Delay between each destruction (ms) |
 
 ### Regen
 Automatically destroys redstone ore blocks (Hive Skywars regen).
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | range | float | 5.0 | Detection range |
@@ -182,11 +154,8 @@ Automatically destroys redstone ore blocks (Hive Skywars regen).
 | enableLitRedstoneOre | bool | true | Target lit redstone ore blocks |
 | enableDeepslateRedstone | bool | false | Target deepslate redstone blocks |
 
----
-
 ### RegenAssist
 Aim assist for redstone blocks (always targets the top face) (Hive Skywars regen).
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | range | float | 5.7 | Detection range |
@@ -200,15 +169,29 @@ Aim assist for redstone blocks (always targets the top face) (Hive Skywars regen
 | enableLitRedstoneOre | bool | true | Target lit redstone ore blocks |
 | enableDeepslateRedstone | bool | false | Target deepslate redstone blocks |
 
----
-
-### Nuker
-Destroys all blocks within a radius around the player.
-
+### ThrowPearl
+Automatically throws an ender pearl.
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| radius | int | 1 | Destruction radius (1 = 3x3, 2 = 5x5, etc.) |
-| delayPerBlock | int | 50 | Delay between each destruction (ms) |
+| keybind | int | 0 | Activation key (0 = disabled) |
+| pearlId | int | 0x1c6 | Pearl item ID (454 decimal) |
+| clickCount | int | 3 | Number of right clicks to simulate |
+| clickDelay | int | 50 | Delay between clicks (ms) |
+
+### ThrowPot
+Automatically throws a potion.
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| keybind | int | 0 | Activation key (0 = disabled) |
+| potionId | int | 0x258 | Potion item ID (600 decimal) |
+| clickDelay | int | 50 | Delay after click (ms) |
+
+### Other Combat Modules
+- **TpAura**: Teleport aura logic (Work In Progress)
+- **TrapPlayer**: Traps player automatically (Work In Progress)
+- **PearlLanding**: Predictive landing actions for pearls (Work In Progress)
+- **CoverRegen**: Automatically covers blocks for regen (Work In Progress)
+- **RedstoneCacheManager**: Utility cache used by Regen and RegenAssist
 
 ---
 
@@ -216,7 +199,6 @@ Destroys all blocks within a radius around the player.
 
 ### Velocity
 Reduces or cancels received knockback.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | mode | enum | OomphSafe | Mode (Simple, GhostSim, MicroReduction, WTapCancel, GroundAbuse, OomphSafe) |
@@ -231,10 +213,6 @@ Reduces or cancels received knockback.
 | wTapSprintToggle | bool | true | Toggle sprint during W-Tap |
 | groundAbortThreshold | float | 0.3 | Ground distance to abort |
 | forceOnGround | bool | true | Force onGround flag |
-| oomphSafeReduction | float | 0.5 | Oomph safe reduction (50%) |
-| oomphEnableWTap | bool | true | Enable W-Tap in Oomph mode |
-| oomphEnableGroundAbuse | bool | true | Enable ground abuse in Oomph mode |
-| oomphMaxReductionTicks | int | 8 | Max reduction ticks for Oomph |
 | onClickOnly | bool | false | Only activate while clicking |
 | onGroundOnly | bool | false | Only activate on ground |
 | onlyTargeting | bool | false | Only activate while targeting |
@@ -242,11 +220,8 @@ Reduces or cancels received knockback.
 | toggleThreadSleep | bool | false | Thread sleep |
 | toggleThreadSleepValue | int | 10 | Sleep value (ms) |
 
----
-
 ### Timer
 Modifies game tick speed.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | onlyGround | bool | false | Only activate on ground |
@@ -267,11 +242,8 @@ Modifies game tick speed.
 | minSpeed | float | 1.0 | Minimum speed (random mode) |
 | maxSpeed | float | 1.0 | Maximum speed (random mode) |
 
----
-
 ### AutoJumpReset
 Automatic combo reset via jumping.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | onlyTargeting | bool | false | Only activate while targeting |
@@ -292,11 +264,8 @@ Automatic combo reset via jumping.
 | toggleThreadSleep | bool | true | Thread sleep |
 | toggleThreadSleepValue | int | 10 | Sleep value (ms) |
 
----
-
 ### Fly
 Enables flight with multiple modes.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | mode | enum | OomphSafe | Mode (Vanilla, Glide, Motion, Jetpack, Creative, OomphSafe) |
@@ -309,21 +278,13 @@ Enables flight with multiple modes.
 | glideBoostSpeed | float | 0.3 | Boost speed in glide mode |
 | jetpackInterval | int | 8 | Jetpack interval (ticks) |
 | jetpackBoost | float | 0.5 | Jetpack boost force |
-| oomphMaxHeight | float | 3.0 | Max height above start (Oomph) |
-| oomphPacketDelay | int | 350 | Latency spoof delay (Oomph) |
-| oomphBlockCorrections | bool | true | Block server corrections (Oomph) |
-| oomphSprintSpoof | bool | true | Spoof sprint (Oomph) |
-| oomphGlideFlag | bool | true | Use START_GLIDING flag (Oomph) |
 | spoofOnGround | bool | false | Spoof onGround flag |
 | useLatencySpoof | bool | true | Enable latency spoof |
 | latencySpoofValue | int | 350 | Latency spoof value (ms) |
 | blockMotionPackets | bool | true | Block motion correction packets |
 
----
-
 ### AutoSTap
 Automatic S-Tap (backward tap after hit for more KB).
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | horizontalDistance | float | 1.5 | Horizontal distance to trigger |
@@ -331,22 +292,23 @@ Automatic S-Tap (backward tap after hit for more KB).
 | adaptive | bool | false | Adaptive mode |
 | backwardDelay | int | 75 | Backward tap duration (ms) |
 
----
-
 ### AutoWTap
 Automatic W-Tap (releases forward after hit to reset sprint).
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | pressTime | int | 120 | Forward release duration (ms) |
 | minActiveDistance | float | 0.0 | Minimum activation distance |
 | maxActiveDistance | float | 6.0 | Maximum activation distance |
 
----
+### AutoStrafe
+Automatically strafes left/right.
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| duration | int | 60 | Hold duration (ms) |
+| maxDistance | float | 3.0 | Max distance to strafe |
 
 ### InventoryWalk
 Allows movement while inventory is open.
-
 *No configurable parameters.*
 
 ---
@@ -354,8 +316,7 @@ Allows movement while inventory is open.
 ## Visual
 
 ### Misplace
-Manipulates entity positions (pull/push).
-
+Manipulates entity positions (pull/push) on the client side to bypass reach limitations or adjust distances.
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | toggleThreadSleep | bool | false | Thread sleep |
@@ -368,11 +329,8 @@ Manipulates entity positions (pull/push).
 | reverseMode | bool | false | Push instead of pull |
 | smoothingFactor | float | 0.35 | Smoothing factor (0.1 = smooth, 1.0 = instant) |
 
----
-
 ### BackTrack
 Delays entity movement packets to hit them at a past position.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | minimalInterval | float | 2000 | Minimum interval (ms) |
@@ -384,11 +342,8 @@ Delays entity movement packets to hit them at a past position.
 | onlyOnClick | bool | false | Only activate while clicking |
 | mode | enum | INTERNAL | Mode (INTERNAL, EXTERNAL) |
 
----
-
 ### Blink
-Stores outgoing packets and releases them at once (teleportation).
-
+Stores outgoing packets and releases them at once (simulated teleportation).
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | manualMode | bool | true | Manual mode (hold key) |
@@ -398,18 +353,14 @@ Stores outgoing packets and releases them at once (teleportation).
 | onlyClick | bool | false | Only activate while clicking |
 | onlyMove | bool | false | Only activate while moving |
 
----
-
-### FakeLag
-Simulates artificial lag.
-
-*No configurable parameters.*
-
----
+### FakeLag / NetworkLag
+Simulates artificial network lag (packet throttling/delaying).
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| *None exposed* | N/A | N/A | Handled internally / specific implementation |
 
 ### ESP
 Renders players through walls (boxes, distance, lines).
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | showBoxes | bool | true | Show boxes |
@@ -423,11 +374,8 @@ Renders players through walls (boxes, distance, lines).
 | colorB | float | 0.25 | Blue color (0-1) |
 | colorA | float | 0.95 | Opacity (0-1) |
 
----
-
 ### Radar
 Minimap showing nearby player positions.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | range | float | 45.0 | Detection range |
@@ -447,7 +395,6 @@ Minimap showing nearby player positions.
 
 ### Scaffold
 Automatically places blocks under the player's feet.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | onlySlot | bool | false | Only activate on a specific slot |
@@ -458,11 +405,8 @@ Automatically places blocks under the player's feet.
 | lockY | bool | false | Lock Y height |
 | spoofSlot | bool | true | Spoof slot for server |
 
----
-
 ### AutoRefill
 Automatically refills potions from inventory.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | potionId | int | 0x258 | Potion item ID (600 decimal) |
@@ -470,11 +414,16 @@ Automatically refills potions from inventory.
 | keybind | int | 0x75 | Activation key (VK_F6 default) |
 | autoDetect | bool | false | Auto-detect open inventory |
 
----
+### ChestStealer
+Automatically steals items from opened chests.
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| stealDelay | int | 50 | Delay between item transfers (ms) |
+| closeDelay | int | 100 | Delay before starting to steal after chest opens (ms) |
+| keybind | int | 0 | Activation key (0 = auto when opened) |
 
 ### InstantBreak
 Speeds up block breaking.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | breakSpeed | float | 1.0 | Break speed multiplier |
@@ -485,7 +434,6 @@ Speeds up block breaking.
 
 ### FullLatencyDisabler
 Adds artificial latency via WinDivert for anti-cheat bypass.
-
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | baseDelay | int | 50 | Base delay (ms) |
@@ -501,7 +449,7 @@ Adds artificial latency via WinDivert for anti-cheat bypass.
 | onlyWithModules | bool | false | Only activate when combat/movement modules are active |
 | autoAdjust | bool | false | Dynamically adjust delay |
 
-
+---
 
 ## Discord server for support and help
 https://discord.gg/zeyacheat
