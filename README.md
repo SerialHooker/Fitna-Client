@@ -117,19 +117,6 @@ Forces critical hits on every attack.
 | checkInterval | int | 5 | Check interval (ticks) |
 | cooldownAfterHit | int | 200 | Cooldown after hit (ms) |
 
-### Disabler
-Advanced anti-cheat bypasses and desync utilities (Solstice/Prax based).
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| mode | enum | Custom | Disabler mode (Custom, Lifeboat, Flareon, Sentinel, SentinelNew, OomphBypass) |
-| flareonType | enum | PingSpoof | Sub-mode for Flareon (PingSpoof, PingHolder, MoveFix) |
-| oomphType | enum | VelocityReduce| Sub-mode for Oomph (LiquidSpoof, TickDesync, VelocityReduce, GroundAbuse, etc.) |
-| enablePositionSpoof| bool | false | Spoof combat position |
-| targetRaycastDist | float | 2.85 | Combat raycast spoof distance |
-| enableBacktrack | bool | false | Built-in combat backtrack |
-| enableHitboxBypass| bool | false | Built-in combat hitbox bypass |
-| enableSilentRotation| bool | false | Silent rotation on attack |
-
 ### Nuker
 Destroys all blocks within a radius around the player.
 | Parameter | Type | Default | Description |
